@@ -79,7 +79,6 @@
         class="text-[15px] ml-4 w-full bg-transparent focus:outline-none"
       />
     </div> {% endcomment %}
-
     <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
     >
@@ -123,47 +122,43 @@
     </div>
 </div>
 
-<div class="container" style="width:30%; margin-left:660px;">
+<div class="container" style="width:30%; margin-left: 670px; margin-top: 50px;">
     <center>
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        <h3>Edit Program</h3>
+        <h3>Insert New Course</h3>
         <br/>
-        <form method="POST" action="/update-program/{{Program.name}}">
+        <form method="POST">
             {% csrf_token %}
-        <table class="table">
+            <table class="table">
             <tr>
-                <td>Program Name</td>
-                <td><input type="text" name="program_name" class="form-control" value="{{Program.name}}" readonly ></td>
+                <td>Course No.</td>
+                <td><input type="text" class="form-control" placeholder="No." name="course_id" required></td>
             </tr>
             <tr>
-                <td>Program ID</td>
-                <td><input type="text" name="program_id" class="form-control" value="{{Program.id}}" required></td>
+                <td>Course Name</td>
+                <td><input type="text" class="form-control" placeholder="Name" name="course_name" required></td>
+            </tr>
+            <tr>
+                <td>Course Credits</td>
+                <td><input type="text" class="form-control" placeholder="Credits - e.g.(3-0-1.5-4.5)" name="course_credits" required></td>
             </tr>
         </table>
-                <input type="submit" id="btn" value="Update Program" class="btn1">
-                    {% comment %} {% if messages %}
-                    {% for mess in messages %} {% endcomment %}
-                    <br/>
-                    <b id="message_ele" style="color: green;"></b>
-                    {% comment %} {% endfor %}
-                    {% endif %} {% endcomment %}
-
+               <input class="btn1" type="submit" value="Insert">
+               {% if messages %}
+                    {% for mess in messages %}
+                    <br>
+                    <b style="color: green;">{{mess}}</b>
+                    {% endfor %}
+                    {% endif %}
         </form>
     </center>
 </div>
 
 <script type="text/javascript">
-    message_ele = document.getElementById("message_ele");
-
-    btn.addEventListener("click", function(){
-        message_ele.innerText = "Program Updated Successfully.";
-        message_ele.style.display = "block";
-    });
-
     function dropdown() {
       document.querySelector("#submenu").classList.toggle("hidden");
       document.querySelector("#arrow").classList.toggle("rotate-0");

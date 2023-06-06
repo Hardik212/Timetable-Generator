@@ -130,21 +130,25 @@
         <br/>
         <br/>
         <br/>
-        <h3>Edit Program</h3>
+        <h3>Edit Course</h3>
         <br/>
-        <form method="POST" action="/update-program/{{Program.name}}">
+        <form method="POST" action="/update-course/{{Course.course_id}}">
             {% csrf_token %}
         <table class="table">
             <tr>
-                <td>Program Name</td>
-                <td><input type="text" name="program_name" class="form-control" value="{{Program.name}}" readonly ></td>
+                <td>Course No.</td>
+                <td><input type="text" name="course_id" class="form-control" value="{{Course.course_id}}" readonly ></td>
             </tr>
             <tr>
-                <td>Program ID</td>
-                <td><input type="text" name="program_id" class="form-control" value="{{Program.id}}" required></td>
+                <td>Course Name</td>
+                <td><input type="text" name="course_name" class="form-control" value="{{Course.course_name}}" required ></td>
+            </tr>
+            <tr>
+                <td>Course Credits</td>
+                <td><input type="text" name="course_credits" class="form-control" value="{{Course.course_credits}}" required></td>
             </tr>
         </table>
-                <input type="submit" id="btn" value="Update Program" class="btn1">
+                <input type="submit" id="btn" value="Update Course" class="btn1">
                     {% comment %} {% if messages %}
                     {% for mess in messages %} {% endcomment %}
                     <br/>
@@ -160,7 +164,7 @@
     message_ele = document.getElementById("message_ele");
 
     btn.addEventListener("click", function(){
-        message_ele.innerText = "Program Updated Successfully.";
+        message_ele.innerText = "Course Updated Successfully.";
         message_ele.style.display = "block";
     });
 

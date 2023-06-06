@@ -7,3 +7,11 @@ class Program(models.Model):
 
     def __str__(self):
         return self.name;
+
+class Course(models.Model):
+    course_id = models.CharField(primary_key=True, max_length=20)
+    course_name = models.CharField(max_length=80)
+    course_credits = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.course_id;
