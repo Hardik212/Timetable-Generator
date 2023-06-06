@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from core.models import Program
 from django.contrib import messages
-from core.forms import programforms
+# from core.forms import programforms
 import time
 
 # Create your views here.
@@ -25,7 +25,7 @@ def insert_program(request):
             messages.success(request,'Program '+saverecord.name+ ' with ID '+saverecord.id+ ' is saved successfully..!')
             return render(request,'insert_program.html')
     else :
-            return render(request,'insert_program.html')
+        return render(request,'insert_program.html')
 
 def edit_program(request,id):
     editprogramobj=Program.objects.get(id=id)
@@ -39,4 +39,3 @@ def update_program(request,id):
 
 
 ################################ COURSE MASTER ################################
-

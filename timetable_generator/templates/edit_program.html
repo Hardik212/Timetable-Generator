@@ -45,7 +45,7 @@
    </style>
 </head>
 <body>
-    
+
     <span
     class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
     onclick="openSidebar()"
@@ -149,14 +149,14 @@
                     <b id="message_ele" style="color: green;"></b>
                     {% comment %} {% endfor %}
                     {% endif %} {% endcomment %}
-               
+
         </form>
     </center>
 </div>
 
 <script type="text/javascript">
     message_ele = document.getElementById("message_ele");
-    
+
     btn.addEventListener("click", function(){
         message_ele.innerText = "Program Updated Successfully.";
         message_ele.style.display = "block";
