@@ -45,7 +45,7 @@
             font-weight:bold;
         }
 
-        #import{
+        #import2{
             border:none;
             outline:none;
             height:42px;
@@ -55,7 +55,7 @@
             border-radius:20px;
             font-weight:bold;
         }
-        #import:hover{
+        #import2:hover{
             background-color: #2563EB;
             color:white;
             width:20%;
@@ -146,41 +146,39 @@
         <br/>
         <br/>
         <br/>
-        <h3>Course Master</h3>
+        <h3>Faculty Master</h3>
         <br/>
-        <a href="{% url 'insert_course' %}" class="btn1 nav-link text">Add New Course</a>
+        <a href="{% url 'insert_faculty' %}" class="btn1 nav-link text">Add New Faculty</a>
         <br/>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="csv_file" accept=".csv" required>
-            <button type="submit" id="import">Import CSV</button>
+            <button type="submit" id="import2">Import CSV</button>
             {% if messages %}
                 {% for mess in messages %}
                     <br>
-                    <b id="msg" style="color: green;"></b>
+                    <b id="msg2" style="color: green;"></b>
                 {% endfor %}
             {% endif %}
         </form>
         {% comment %} <button type="submit" name="import" id="import" style="margin-bottom: 15px;" onclick="{% url 'course_master' %}">Import CSV</button> {% endcomment %}
         <br/>
-        <div class="container" style="width:80%">
+        <div class="container" style="width:60%">
         <table class="table" border="1">
             <tr style="background: #111827; color: white;">
                 <th>No.</th>
-                <th>Course No.</th>
-                <th>Course Name</th>
-                <th>Credits</th>
+                <th>Full Name</th>
+                <th>Short Name</th>
                 <th>Edit</th>
                 {% comment %} <th>Delete</th> {% endcomment %}
             </tr>
             {% for result in data%}
             <tr>
                 <td>{{forloop.counter}}</td>
-                <td>{{result.course_id}}</td>
-                <td>{{result.course_name}}</td>
-                <td>{{result.course_credits}}</td>
+                <td>{{result.faculty_fname}}</td>
+                <td>{{result.faculty_sname}}</td>
                 <td>
-                  <a href="edit-course/{{result.course_id}}"><i class="fa fa-edit fa-lg fa-fw" style="color:#222529"></i></a>
+                  <a href="edit-faculty/{{result.faculty_fname}}"><i class="fa fa-edit fa-lg fa-fw" style="color:#222529"></i></a>
                 </td>
                 {% comment %} <td>
                     <a href="delete-course/{{result.course_id}}"><i class="fa-solid fa-trash-can fa-lg fa-fw" style="color:#222529"></i></a>
@@ -193,12 +191,12 @@
 </div>
 
 <script type="text/javascript">
-    btn = document.getElementById('import');
-    msg = document.getElementById('msg');
+    btn2 = document.getElementById('import2');
+    msg2 = document.getElementById('msg2');
 
-    btn.onclick = function() {
-        msg.innerHTML = "File Imported Successfully.";
-        setTimeout(function(){ msg.hide() }, 5000);
+    btn2.onclick = function() {
+        msg2.innerHTML = "File Imported Successfully.";
+        setTimeout(function(){ msg2.hide() }, 5000);
     }
 
     function dropdown() {

@@ -16,55 +16,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
-        body{
-        }
-        .navbar{
-            overflow: hidden;
-            background-color: #e3f3f5;;
-            position: fixed;
-            top: 0; 
-            width: 100%; 
-        }
-        .col-lg-7{
-            margin-left:205px;
-        }
-        .btn1{
-            border:none;
-            outline:none;
-            height:42px;
-            width:18%;
-            background-color: #111827;
-            color:white;
-            border-radius:20px;
-            font-weight:bold;
-        }
-        .btn1:hover{
-            background-color: #2563EB;
-            color:white;
-            width:20%;
-            font-weight:bold;
-        }
-
-        #import{
-            border:none;
-            outline:none;
-            height:42px;
-            width:18%;
-            background-color: #111827;
-            color:white;
-            border-radius:20px;
-            font-weight:bold;
-        }
-        #import:hover{
-            background-color: #2563EB;
-            color:white;
-            width:20%;
-            font-weight:bold;
-        }
-    </style>
+       .navbar{
+           overflow: hidden;
+           background-color: #e3f3f5;;
+           position: fixed;
+           top: 0; 
+           width: 100%; 
+       }
+       .col-lg-7{
+           margin-left:205px;
+       }
+       input.btn1, textarea{
+           border:none;
+           outline:none;
+           height:50px;
+           width:50%;
+           background-color: #111827;
+           color:white;
+           border-radius:8px;
+           font-weight:bold;
+       }
+       .btn1:hover{
+           background-color: #2563EB;
+           color:white;
+           border:none;
+           font-weight:bold;
+       }
+   </style>
 </head>
 <body>
-    
+
     <span
     class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
     onclick="openSidebar()"
@@ -107,6 +88,7 @@
       <span class="text-[16px] ml-3 text-gray-200 font-bold">Dashboard</span>
       </a>
     </div>
+
     <div
       class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
     >
@@ -133,7 +115,7 @@
       <i class="fa-solid fa-user-tie ml-0.5" style="color: #ffffff;"></i>
       <div class="flex justify-between w-full items-center">
         <a href="{% url 'faculty_master' %}">
-            <span class="text-[16px] ml-4 text-gray-200 font-bold">Faculties</span>
+          <span class="text-[16px] ml-4 text-gray-200 font-bold">Faculties</span>
         </a>
         {% comment %} <span class="text-sm rotate-180" id="arrow">
           <i class="bi bi-chevron-down"></i>
@@ -141,66 +123,40 @@
       </div>
     </div>
 </div>
-    <div style="margin-left: 280px;">
+
+<div class="container" style="width:30%; margin-left: 670px; margin-top: 50px;">
     <center>
         <br/>
         <br/>
         <br/>
-        <h3>Course Master</h3>
         <br/>
-        <a href="{% url 'insert_course' %}" class="btn1 nav-link text">Add New Course</a>
         <br/>
-        <form method="post" enctype="multipart/form-data">
+        <h3>Insert New Faculty</h3>
+        <br/>
+        <form method="POST">
             {% csrf_token %}
-            <input type="file" name="csv_file" accept=".csv" required>
-            <button type="submit" id="import">Import CSV</button>
-            {% if messages %}
-                {% for mess in messages %}
-                    <br>
-                    <b id="msg" style="color: green;"></b>
-                {% endfor %}
-            {% endif %}
-        </form>
-        {% comment %} <button type="submit" name="import" id="import" style="margin-bottom: 15px;" onclick="{% url 'course_master' %}">Import CSV</button> {% endcomment %}
-        <br/>
-        <div class="container" style="width:80%">
-        <table class="table" border="1">
-            <tr style="background: #111827; color: white;">
-                <th>No.</th>
-                <th>Course No.</th>
-                <th>Course Name</th>
-                <th>Credits</th>
-                <th>Edit</th>
-                {% comment %} <th>Delete</th> {% endcomment %}
-            </tr>
-            {% for result in data%}
+            <table class="table">
             <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{result.course_id}}</td>
-                <td>{{result.course_name}}</td>
-                <td>{{result.course_credits}}</td>
-                <td>
-                  <a href="edit-course/{{result.course_id}}"><i class="fa fa-edit fa-lg fa-fw" style="color:#222529"></i></a>
-                </td>
-                {% comment %} <td>
-                    <a href="delete-course/{{result.course_id}}"><i class="fa-solid fa-trash-can fa-lg fa-fw" style="color:#222529"></i></a>
-                </td> {% endcomment %}
+                <td>Full Name</td>
+                <td><input type="text" class="form-control" placeholder="Full Name" name="faculty_fname" required></td>
             </tr>
-            {% endfor %}
+            <tr>
+                <td>Short Name</td>
+                <td><input type="text" class="form-control" placeholder="Short Name" name="faculty_sname" required></td>
+            </tr>
         </table>
+               <input class="btn1" type="submit" value="Insert">
+               {% if messages %}
+                    {% for mess in messages %}
+                    <br>
+                    <b style="color: green;">{{mess}}</b>
+                    {% endfor %}
+                    {% endif %}
+        </form>
     </center>
-</div>
 </div>
 
 <script type="text/javascript">
-    btn = document.getElementById('import');
-    msg = document.getElementById('msg');
-
-    btn.onclick = function() {
-        msg.innerHTML = "File Imported Successfully.";
-        setTimeout(function(){ msg.hide() }, 5000);
-    }
-
     function dropdown() {
       document.querySelector("#submenu").classList.toggle("hidden");
       document.querySelector("#arrow").classList.toggle("rotate-0");

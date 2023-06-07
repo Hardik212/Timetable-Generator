@@ -17,4 +17,9 @@ urlpatterns = [
     path('update-course/<str:id>',views.update_course,name='update_course'),
     # path('delete-course/<str:id>',views.delete_course,name='delete_course'),
 
+    ########### Faculty Master ###########
+    path('faculty-master', views.faculty_master, name='faculty_master'),
+    path('insert-faculty', views.insert_faculty, name='insert_faculty'),
+    path('edit-faculty/<str:id>',views.edit_faculty, name='edit_faculty'),
+    path('update-faculty/<str:id>',views.update_faculty,name='update_faculty'),
 ]

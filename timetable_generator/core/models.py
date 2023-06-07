@@ -15,3 +15,10 @@ class Course(models.Model):
 
     def __str__(self):
         return self.course_id;
+
+class Faculty(models.Model):
+    faculty_fname = models.CharField(primary_key=True, max_length=50)
+    faculty_sname = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.faculty_fname;
