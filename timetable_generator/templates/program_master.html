@@ -86,7 +86,7 @@
     >
       {% comment %} <i class="bi bi-house-door-fill"></i> {% endcomment %}
       <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i>
-      <a href="{% url 'index' %}">
+      <a href="{% url 'home' %}">
       <span class="text-[16px] ml-3 text-gray-200 font-bold">Dashboard</span>
       </a>
     </div>
@@ -123,6 +123,51 @@
         </span> {% endcomment %}
       </div>
     </div>
+    <div
+      class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+    >
+      {% comment %} <i class="bi bi-house-door-fill"></i> {% endcomment %}
+      <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i>
+      <a href="{% url 'course_offered' %}">
+        <span class="text-[16px] ml-3 text-gray-200 font-bold">Course Offered</span>
+        </a>
+    </div>
+    <div
+      class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+    >
+      {% comment %} <i class="bi bi-house-door-fill"></i> {% endcomment %}
+      <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i>
+      <a href="{% url 'course_faculty' %}">
+        <span class="text-[16px] ml-3 text-gray-200 font-bold">Semester</span>
+      </a>
+    </div>
+    <div
+      class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+    >
+      {% comment %} <i class="bi bi-house-door-fill"></i> {% endcomment %}
+      <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i>
+      <a href="{% url 'electives' %}">
+        <span class="text-[16px] ml-3 text-gray-200 font-bold">Elective Details</span>
+      </a>
+    </div>
+    <div
+      class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+    >
+      {% comment %} <i class="bi bi-house-door-fill"></i> {% endcomment %}
+      <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i>
+      <a href="{% url 'slots' %}">
+        <span class="text-[16px] ml-3 text-gray-200 font-bold">Slot Assignment</span>
+      </a>
+    </div>
+    <div
+      class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+    >
+      {% comment %} <i class="bi bi-house-door-fill"></i> {% endcomment %}
+      <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i>
+      <a href="{% url 'timetable' %}">
+        <span class="text-[16px] ml-3 text-gray-200 font-bold">Generate Timetable</span>
+      </a>
+    </div>
 </div>
     <div style="margin-left: 280px;">
     <center>
@@ -136,12 +181,16 @@
         <div class="container" style="width:70%">
         <table class="table" border="1">
             <tr style="background: #111827; color: white;">
+                <th></th>
                 <th>Program Name</th>
                 <th>Program ID</th>
                 <th>Edit</th>
             </tr>
             {% for result in data%}
             <tr>
+                <td>
+                  <a href="scheme/{{result.id}}"><i class="fa fa-info-circle" style="color:#222529"></i></a>
+                </td>
                 <td>{{result.name}}</td>
                 <td>{{result.id}}</td>
                 <td>
@@ -150,8 +199,8 @@
             </tr>
             {% endfor %}
         </table>
+        </div>
     </center>
-</div>
 </div>
 
 <script type="text/javascript">

@@ -1,0 +1,2 @@
+   <!-- <a class="box" href="{% url 'autumn2' %}" id="autumn2">Autumn <span id="year2"></span></a>
+          <a class="box" href="{% url 'winter1' %}" id="winter1">Winter <span id="year3"></span></a> -->
